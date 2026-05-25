@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AWS Summit India Online 2026 — Engineer Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A1628;--orange:#FF9900;--orange-light:#FFF3D6;
+  --bg:#F4F6F9;--surface:#FFFFFF;--border:#E2E8F0;
+  --text:#1A202C;--muted:#64748B;--subtle:#94A3B8;
+  --radius:10px;--radius-lg:14px;
+  --track-ai-bg:#E6F1FB;--track-ai-txt:#0C447C;--track-ai-bar:#378ADD;
+  --track-dev-bg:#EEEDFE;--track-dev-txt:#3C3489;--track-dev-bar:#7F77DD;
+  --track-data-bg:#FAEEDA;--track-data-txt:#633806;--track-data-bar:#EF9F27;
+  --track-sec-bg:#FAECE7;--track-sec-txt:#712B13;--track-sec-bar:#D85A30;
+  --track-mig-bg:#EAF3DE;--track-mig-txt:#27500A;--track-mig-bar:#639922;
+  --track-biz-bg:#FBEAF0;--track-biz-txt:#72243E;--track-biz-bar:#D4537E;
+  --track-amz-bg:#E1F5EE;--track-amz-txt:#085041;--track-amz-bar:#1D9E75;
+  --track-kn-bg:#F1EFE8;--track-kn-txt:#444441;--track-kn-bar:#888780;
+}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:inherit}
+
+/* TOP NAV */
+.topnav{background:var(--navy);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+.topnav-brand{display:flex;align-items:center;gap:10px}
+.logo{background:var(--orange);color:var(--navy);font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12px;padding:5px 8px;border-radius:6px;letter-spacing:0.02em}
+.brand-text h1{font-size:14px;font-weight:600;color:#fff;letter-spacing:-0.01em}
+.brand-text p{font-size:11px;color:#8899BB;margin-top:1px}
+.nav-tabs{display:flex;gap:3px;background:rgba(255,255,255,0.08);padding:3px;border-radius:8px}
+.nav-tab{padding:6px 16px;font-size:12px;font-weight:500;cursor:pointer;border-radius:6px;color:#8899BB;border:none;background:transparent;font-family:inherit;transition:all 0.15s}
+.nav-tab.active{background:var(--orange);color:var(--navy)}
+.nav-tab:hover:not(.active){color:#fff}
+
+/* LAYOUT */
+.container{max-width:860px;margin:0 auto;padding:28px 20px}
+
+/* BANNER */
+.banner{background:#fff;border:1px solid #C0DD97;border-radius:var(--radius-lg);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.banner-left{display:flex;align-items:center;gap:10px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#3B6D11;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.banner-title{font-size:13px;font-weight:600;color:#27500A}
+.banner-meta{font-size:11px;color:#3B6D11;margin-top:2px}
+.banner-link{font-size:12px;color:#3B6D11;text-decoration:none;border:1px solid #97C459;padding:5px 12px;border-radius:20px;font-weight:500;transition:background 0.15s}
+.banner-link:hover{background:#EAF3DE}
+
+/* PROVISIONAL NOTICE */
+.notice{background:#FFFBEB;border:1px solid #FCD34D;border-radius:var(--radius);padding:10px 14px;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#92400E;line-height:1.5}
+.notice svg{flex-shrink:0;margin-top:1px}
+.notice a{color:#92400E;font-weight:600;text-decoration:underline}
+
+/* FORM */
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px}
+.step-header{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.step-badge{width:24px;height:24px;border-radius:50%;background:var(--navy);color:var(--orange);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;flex-shrink:0}
+.step-title{font-size:15px;font-weight:600;color:var(--text)}
+.step-sub{font-size:12px;color:var(--muted);margin-bottom:18px;padding-left:34px}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+label{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:5px;letter-spacing:0.04em;text-transform:uppercase}
+input[type=text],input[type=email],select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:var(--text);outline:none;transition:border-color 0.15s}
+input:focus,select:focus{border-color:var(--navy)}
+.divider{height:1px;background:var(--border);margin:20px 0}
+
+/* PRESETS */
+.sec-label{font-size:10px;font-weight:600;letter-spacing:0.06em;color:var(--subtle);margin-bottom:7px;text-transform:uppercase}
+.preset-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.preset-btn{padding:5px 14px;font-size:12px;font-weight:500;border-radius:20px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);font-family:inherit;transition:all 0.15s}
+.preset-btn:hover{border-color:var(--navy);color:var(--navy)}
+.preset-btn.active{background:var(--navy);border-color:var(--navy);color:var(--orange)}
+
+/* TRACK FILTERS */
+.track-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.track-pill{padding:4px 11px;font-size:11px;font-weight:500;border-radius:20px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);font-family:inherit;transition:all 0.15s}
+.track-pill:hover{border-color:var(--muted)}
+
+/* SESSION GRID */
+.sessions-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scard{border:1px solid var(--border);border-radius:var(--radius);padding:11px 13px;cursor:pointer;position:relative;background:#fff;transition:border-color 0.15s,background 0.15s}
+.scard:hover:not(.disabled){border-color:#94A3B8}
+.scard.disabled{opacity:0.4;cursor:default}
+.scard.sel{border-width:1.5px}
+.scard .ck{position:absolute;top:9px;right:9px;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.15s}
+.scard.sel .ck{opacity:1}
+.ck svg{width:9px;height:9px;stroke:#fff;stroke-width:3;fill:none}
+.sc-title{font-size:12px;font-weight:500;line-height:1.4;padding-right:20px;color:var(--text)}
+.sc-meta{display:flex;align-items:center;gap:4px;margin-top:6px;flex-wrap:wrap}
+.lvl{display:inline-block;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;font-family:'IBM Plex Mono',monospace}
+.l100{background:#E6F1FB;color:#0C447C}
+.l200{background:#EAF3DE;color:#27500A}
+.l300{background:#FAEEDA;color:#633806}
+.l400{background:#FAECE7;color:#712B13}
+.lKN{background:#F1EFE8;color:#444441}
+.sc-time{font-size:10px;color:var(--muted)}
+.sc-track{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:500}
+
+/* SEL BAR */
+.sel-bar{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:10px 16px;border-radius:8px;background:var(--bg);border:1px solid var(--border)}
+.sel-txt{font-size:13px;color:var(--muted)}
+.sel-txt strong{color:var(--text)}
+.warn-txt{font-size:12px;color:#DC2626;display:none;align-items:center;gap:4px}
+
+/* SUBMIT BTN */
+.sub-btn{width:100%;padding:12px;margin-top:16px;font-size:14px;font-weight:600;font-family:inherit;background:var(--navy);color:var(--orange);border:none;border-radius:var(--radius);cursor:pointer;letter-spacing:0.01em;transition:background 0.15s}
+.sub-btn:hover{background:#152240}
+
+/* SUCCESS */
+.success-wrap{text-align:center;padding:3rem 1rem}
+.sicon{width:60px;height:60px;background:#EAF3DE;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.sicon svg{width:28px;height:28px;stroke:#3B6D11;stroke-width:2.5;fill:none}
+.sname{font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px}
+.ssub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+.ssub a{color:#185FA5;font-weight:500}
+.schips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:22px}
+.chip{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500}
+.again-btn{padding:9px 22px;font-size:13px;font-weight:500;font-family:inherit;background:transparent;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;color:var(--text);transition:border-color 0.15s}
+.again-btn:hover{border-color:var(--navy)}
+
+/* ADMIN */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.stat{border-radius:var(--radius);padding:16px;border:1px solid transparent}
+.stat-n{font-size:26px;font-weight:600;font-family:'IBM Plex Mono',monospace}
+.stat-l{font-size:11px;margin-top:4px;font-weight:500}
+.filter-row{display:flex;gap:8px;margin-bottom:16px;align-items:center}
+.filter-row input,.filter-row select{font-size:13px}
+.filter-row input{flex:1}
+.filter-row select{width:170px}
+.exp-btn{padding:9px 16px;font-size:12px;font-weight:500;font-family:inherit;background:transparent;border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:6px;white-space:nowrap;transition:border-color 0.15s}
+.exp-btn:hover{border-color:var(--navy)}
+.bar-section{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:16px}
+.bar-hd{font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px}
+.bar-item{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.bar-name{font-size:11px;color:var(--text);width:220px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.4s ease}
+.bar-ct{font-size:11px;color:var(--muted);width:20px;text-align:right;font-family:'IBM Plex Mono',monospace}
+.reg-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:10px}
+.reg-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ava{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;font-family:'IBM Plex Mono',monospace}
+.reg-name{font-size:14px;font-weight:600;color:var(--text)}
+.reg-sub{font-size:12px;color:var(--muted);margin-top:1px}
+.reg-ts{margin-left:auto;font-size:11px;color:var(--subtle);font-family:'IBM Plex Mono',monospace}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.empty{text-align:center;padding:3rem;color:var(--muted);font-size:13px}
+.empty svg{margin:0 auto 12px;display:block;stroke:var(--subtle)}
+.page{display:none}
+.page.active{display:block}
+
+@media(max-width:600px){
+  .field-grid,.sessions-grid,.stats-row{grid-template-columns:1fr}
+  .topnav{padding:0 14px}
+  .container{padding:16px 14px}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-brand">
+    <div class="logo">AWS</div>
+    <div class="brand-text">
+      <h1>AWS Summit India Online 2026</h1>
+      <p>June 3, 2026 · Free virtual event · 10:00 AM – 4:00 PM IST</p>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" data-page="register" onclick="switchPage('register')">&#x2B; Register</button>
+    <button class="nav-tab" data-page="admin" onclick="switchPage('admin')">&#x25A6; Admin dashboard</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- REGISTER PAGE -->
+  <div id="page-register" class="page active">
+    <div class="banner">
+      <div class="banner-left">
+        <div class="live-dot"></div>
+        <div>
+          <div class="banner-title">Registration open · AWS Summit India Online</div>
+          <div class="banner-meta">&#x1F4C5; June 3, 2026 &nbsp;·&nbsp; Free &nbsp;·&nbsp; Certificate awarded for 5+ live sessions</div>
+        </div>
+      </div>
+      <a href="https://summits-india.virtual.awsevents.com" target="_blank" class="banner-link">Official site &#x2197;</a>
+    </div>
+
+    <div class="notice">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#92400E" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div><strong>Sessions are provisional.</strong> The list below reflects the published agenda as of May 25, 2026. AWS may add or update sessions before June 3 — verify at <a href="https://aws.amazon.com/events/summits/india/agenda/" target="_blank">the official agenda page</a> before the event.</div>
+    </div>
+
+    <div id="form-view">
+      <div class="card">
+        <div class="step-header"><div class="step-badge">1</div><div class="step-title">Your details</div></div>
+        <div class="step-sub">Basic info for your event record</div>
+        <div class="field-grid">
+          <div><label>Full name</label><input type="text" id="r-name" placeholder="Priya Sharma"/></div>
+          <div><label>Work email</label><input type="email" id="r-email" placeholder="priya@company.com"/></div>
+        </div>
+        <div class="field-grid">
+          <div><label>Role</label><input type="text" id="r-role" placeholder="e.g. Backend Engineer"/></div>
+          <div><label>Team</label>
+            <select id="r-dept">
+              <option value="">— select team —</option>
+              <option>Backend engineering</option>
+              <option>Frontend engineering</option>
+              <option>DevOps / Platform</option>
+              <option>Data / ML</option>
+              <option>Security</option>
+              <option>Product</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="step-header"><div class="step-badge">2</div><div class="step-title">Choose sessions <span style="font-size:12px;font-weight:400;color:var(--muted)">(up to 5)</span></div></div>
+        <div class="step-sub">Use team presets or filter by track to find what suits you</div>
+
+        <div class="sec-label">Team presets</div>
+        <div class="preset-row" id="presets-row"></div>
+
+        <div class="sec-label">Filter by track</div>
+        <div class="track-row" id="track-row"></div>
+
+        <div class="sessions-grid" id="sessions-grid"></div>
+
+        <div class="sel-bar">
+          <span class="sel-txt"><strong id="sel-count">0</strong> of 5 sessions selected</span>
+          <span class="warn-txt" id="sel-warn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Max 5 sessions
+          </span>
+        </div>
+        <button class="sub-btn" onclick="submitReg()">Complete registration &rarr;</button>
+      </div>
+    </div>
+
+    <div id="success-view" style="display:none">
+      <div class="card">
+        <div class="success-wrap">
+          <div class="sicon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="sname" id="s-name"></div>
+          <div class="ssub">Registration recorded successfully!<br>Each engineer must also complete the official AWS sign-up at<br><a href="https://summits-india.virtual.awsevents.com" target="_blank">summits-india.virtual.awsevents.com</a></div>
+          <div class="schips" id="s-chips"></div>
+          <button class="again-btn" onclick="resetForm()">+ Register another engineer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PAGE -->
+  <div id="page-admin" class="page">
+    <div class="stats-row" id="stats-row">
+      <div class="stat" style="background:#E6F1FB"><div class="stat-n" style="color:#0C447C">0</div><div class="stat-l" style="color:#185FA5">Engineers registered</div></div>
+      <div class="stat" style="background:#EEEDFE"><div class="stat-n" style="color:#3C3489">0</div><div class="stat-l" style="color:#534AB7">Session selections</div></div>
+      <div class="stat" style="background:#EAF3DE"><div class="stat-n" style="color:#27500A">0</div><div class="stat-l" style="color:#3B6D11">Teams represented</div></div>
+      <div class="stat" style="background:#E1F5EE"><div class="stat-n" style="color:#085041">0</div><div class="stat-l" style="color:#0F6E56">On track for certificate</div></div>
+    </div>
+    <div class="bar-section" id="pop-chart" style="display:none">
+      <div class="bar-hd">Session popularity</div>
+      <div id="bar-items"></div>
+    </div>
+    <div class="filter-row">
+      <input type="text" id="s-search" placeholder="Search by name or email…" oninput="renderAdmin()"/>
+      <select id="s-dept" onchange="renderAdmin()">
+        <option value="">All teams</option>
+        <option>Backend engineering</option>
+        <option>Frontend engineering</option>
+        <option>DevOps / Platform</option>
+        <option>Data / ML</option>
+        <option>Security</option>
+        <option>Product</option>
+        <option>Other</option>
+      </select>
+      <button class="exp-btn" onclick="exportCSV()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export CSV
+      </button>
+    </div>
+    <div id="reg-list"></div>
+  </div>
+
+</div>
+
+<script>
+const TRACK_COLORS={
+  'AI on AWS':{pill:'#E6F1FB',txt:'#0C447C',bar:'#378ADD',ava:'#E6F1FB',avaTxt:'#185FA5'},
+  'AI-Native Developer':{pill:'#EEEDFE',txt:'#3C3489',bar:'#7F77DD',ava:'#EEEDFE',avaTxt:'#534AB7'},
+  'Data & Analytics':{pill:'#FAEEDA',txt:'#633806',bar:'#EF9F27',ava:'#FAEEDA',avaTxt:'#854F0B'},
+  'Security & Resilience':{pill:'#FAECE7',txt:'#712B13',bar:'#D85A30',ava:'#FAECE7',avaTxt:'#993C1D'},
+  'Migration & Modernization':{pill:'#EAF3DE',txt:'#27500A',bar:'#639922',ava:'#EAF3DE',avaTxt:'#3B6D11'},
+  'Business Applications':{pill:'#FBEAF0',txt:'#72243E',bar:'#D4537E',ava:'#FBEAF0',avaTxt:'#993556'},
+  'Building like Amazon':{pill:'#E1F5EE',txt:'#085041',bar:'#1D9E75',ava:'#E1F5EE',avaTxt:'#0F6E56'},
+  'Keynote':{pill:'#F1EFE8',txt:'#444441',bar:'#888780',ava:'#F1EFE8',avaTxt:'#5F5E5A'},
+};
+function tc(t){return TRACK_COLORS[t]||{pill:'#F1EFE8',txt:'#444441',bar:'#888780',ava:'#F1EFE8',avaTxt:'#5F5E5A'};}
+
+const SESSIONS=[
+  {id:'k1',title:'AWS Summit Bengaluru: Technical Edition Keynote',time:'10:00 AM',level:'KN',track:'Keynote'},
+  {id:'k2',title:'AWS Summit Mumbai: Keynote',time:'10:00 AM',level:'KN',track:'Keynote'},
+  {id:'k3',title:'AWS Summit Bengaluru: Innovators Edition Keynote',time:'10:00 AM',level:'KN',track:'Keynote'},
+  {id:'s1',title:'Building software like never before with agentic AI',time:'11:30 AM',level:'200',track:'AI-Native Developer'},
+  {id:'s2',title:'How Amazon is Transforming Seller Experience using Agentic AI',time:'11:30 AM',level:'100',track:'Building like Amazon'},
+  {id:'s3',title:"From demo to deployment: solving agentic AI's toughest challenges",time:'11:30 AM',level:'200',track:'AI on AWS'},
+  {id:'s4',title:"A practitioner's guide to data for agentic AI",time:'11:30 AM',level:'300',track:'Data & Analytics'},
+  {id:'s5',title:'Why choose AWS for SAP transformation',time:'11:30 AM',level:'200',track:'Business Applications'},
+  {id:'s6',title:'Architecting for Resilience: Beyond Redundancy to True Fault Tolerance',time:'11:30 AM',level:'300',track:'Security & Resilience'},
+  {id:'s7',title:"Modernize SQL Server & .NET with AWS Transform's New AI Agent",time:'11:30 AM',level:'300',track:'Migration & Modernization'},
+  {id:'s8',title:'Blueprint to code: Mastering spec-driven development',time:'12:00 PM',level:'300',track:'AI-Native Developer'},
+  {id:'s9',title:'Breaking the legacy barrier: How AI is revolutionizing modernization',time:'12:00 PM',level:'400',track:'Migration & Modernization'},
+  {id:'s10',title:'Applied AI for communication services via WhatsApp channel',time:'12:00 PM',level:'200',track:'Business Applications'},
+  {id:'s11',title:'Unlock Advanced Model Training: Reinforcement Fine-tuning on Bedrock',time:'12:00 PM',level:'300',track:'AI on AWS'},
+  {id:'s12',title:'How Amazon Pay Beats Global Processor Downtime',time:'12:00 PM',level:'100',track:'Building like Amazon'},
+  {id:'s13',title:'Cache me if you can: Valkey Powers Trillion-Request Workloads',time:'12:00 PM',level:'400',track:'Data & Analytics'},
+  {id:'s14',title:'Protecting Your Infrastructure with Amazon Threat Intelligence',time:'12:00 PM',level:'300',track:'Security & Resilience'},
+  {id:'s15',title:'Building Scalable, Self-Orchestrating AI Workflows with A2A and MCP',time:'1:30 PM',level:'400',track:'AI-Native Developer'},
+  {id:'s16',title:'Secure your AI Apps, Fuel Enterprise Innovation (Palo Alto)',time:'1:30 PM',level:'200',track:'Security & Resilience'},
+  {id:'s17',title:'Improving Customer Experience with GenAI by Amazon RBS-Tech',time:'1:30 PM',level:'100',track:'Building like Amazon'},
+  {id:'s18',title:'Monitoring in the Age of GenAI: Beyond Golden Signals (Datadog)',time:'1:30 PM',level:'200',track:'AI on AWS'},
+  {id:'s19',title:'How Licious scales farm to fork freshness with New Relic',time:'1:30 PM',level:'200',track:'Business Applications'},
+  {id:'s20',title:'Simplify and Secure Dell AI Powered Multi-Cloud Data Protection',time:'1:30 PM',level:'300',track:'Data & Analytics'},
+  {id:'s21',title:'Replacing Traditional Migrations with Unified Transformations at Scale',time:'1:30 PM',level:'200',track:'Migration & Modernization'},
+  {id:'s22',title:'Building resilience against ransomware using AWS Backup',time:'2:00 PM',level:'400',track:'Security & Resilience'},
+  {id:'s23',title:'Automating enterprise-scale code modernization with agentic AI',time:'2:00 PM',level:'300',track:'Migration & Modernization'},
+  {id:'s24',title:'Agents in SDLC - From Legacy Chaos to Agentic Delivery',time:'2:00 PM',level:'200',track:'AI-Native Developer'},
+  {id:'s25',title:'SageMaker HyperPod: Training and Inference for GenAI Models',time:'2:00 PM',level:'300',track:'AI on AWS'},
+  {id:'s26',title:'Delivering AI Powered tools, from Anywhere on Any Device',time:'2:00 PM',level:'200',track:'Business Applications'},
+  {id:'s27',title:'Leveraging Amazon Bedrock to decode customer intent',time:'2:00 PM',level:'200',track:'Building like Amazon'},
+  {id:'s28',title:'Power streaming analytics on AWS with AI-driven insights',time:'2:00 PM',level:'400',track:'Data & Analytics'},
+  {id:'s29',title:'Boost developer productivity with GenAI',time:'2:30 PM',level:'200',track:'AI-Native Developer'},
+  {id:'s30',title:'AI-Driven Modernization on AWS: From Vision to Value (Noventiq)',time:'2:30 PM',level:'200',track:'AI-Native Developer'},
+  {id:'s31',title:'Wiz: Securing the AI Frontier',time:'2:30 PM',level:'200',track:'Security & Resilience'},
+  {id:'s32',title:'The Agentic Evolution (sponsored by Anthropic)',time:'2:30 PM',level:'200',track:'AI on AWS'},
+  {id:'s33',title:'Digital Resilience from Core to Cloud in the Age of AI (Cisco)',time:'2:30 PM',level:'200',track:'Business Applications'},
+  {id:'s34',title:'Trust and Transparency: Implementing Scalable Data Lineage for AI/ML',time:'2:30 PM',level:'300',track:'Data & Analytics'},
+  {id:'s35',title:'From tech debt to competitive advantage: Migrate & modernize with AWS',time:'3:00 PM',level:'200',track:'Migration & Modernization'},
+  {id:'s36',title:'Amazon Nova Forge: Build your own frontier models using Amazon Nova',time:'3:00 PM',level:'300',track:'AI on AWS'},
+  {id:'s37',title:'Actionable controls for improving governance and compliance',time:'3:00 PM',level:'300',track:'Security & Resilience'},
+  {id:'s38',title:'Zero-ETL Magic: DynamoDB to OpenSearch Gen AI with Bedrock',time:'3:00 PM',level:'300',track:'Data & Analytics'},
+  {id:'s39',title:'Unlocking business value by integrating SAP and non-SAP data sources',time:'3:00 PM',level:'200',track:'Business Applications'},
+  {id:'s40',title:'Agentic AI for VMware migrations with AWS Transform',time:'3:30 PM',level:'300',track:'Migration & Modernization'},
+  {id:'s41',title:'Thinking beyond traditional firewalling architectures',time:'3:30 PM',level:'300',track:'Security & Resilience'},
+  {id:'s42',title:'Build your own high performance kernel on AWS Trainium with NKI',time:'3:30 PM',level:'300',track:'AI on AWS'},
+  {id:'s43',title:'Transforming SAP with AWS AI services',time:'3:30 PM',level:'200',track:'Business Applications'},
+];
+
+const PRESETS={
+  'ML / AI':['s3','s11','s25','s32','s36'],
+  'DevOps':['s15','s24','s29','s23','s40'],
+  'Data':['s4','s13','s28','s34','s38'],
+  'Security':['s6','s14','s22','s31','s37'],
+  'Fullstack':['s1','s8','s24','s29','s18'],
+  'Migration':['s7','s9','s21','s35','s40'],
+};
+
+const TRACKS=['All',...Object.keys(TRACK_COLORS)];
+const AVA_PAL=[
+  {bg:'#E6F1FB',txt:'#185FA5'},{bg:'#EEEDFE',txt:'#534AB7'},
+  {bg:'#EAF3DE',txt:'#3B6D11'},{bg:'#FAEEDA',txt:'#854F0B'},
+  {bg:'#E1F5EE',txt:'#0F6E56'},{bg:'#FBEAF0',txt:'#993556'},
+];
+
+let selected=new Set(), activeTrack='All', regs=[];
+
+function initForm(){
+  document.getElementById('presets-row').innerHTML=
+    Object.keys(PRESETS).map(k=>`<button class="preset-btn" id="pre-${k.replace(/\W/g,'')}" onclick="applyPreset('${k}')">${k}</button>`).join('');
+  document.getElementById('track-row').innerHTML=
+    TRACKS.map((t,i)=>{
+      const c=tc(t);
+      const isAll=t==='All';
+      return`<button class="track-pill${i===0?' on':''}" id="trk-${t.replace(/\W/g,'')}" onclick="filterTrack('${t}',this)" style="${i===0?'background:#0A1628;color:#FF9900;border-color:#0A1628':''}">${t}</button>`;
+    }).join('');
+  renderGrid();
+}
+
+function applyPreset(name){
+  selected.clear();
+  (PRESETS[name]||[]).forEach(id=>selected.add(id));
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById('pre-'+name.replace(/\W/g,''));
+  if(el)el.classList.add('active');
+  updateSelBar();renderGrid();
+}
+
+function filterTrack(t,btn){
+  activeTrack=t;
+  document.querySelectorAll('.track-pill').forEach(b=>{b.classList.remove('on');b.style.cssText='';});
+  btn.classList.add('on');
+  if(t==='All'){btn.style.background='#0A1628';btn.style.color='#FF9900';btn.style.borderColor='#0A1628';}
+  else{const c=tc(t);btn.style.background=c.pill;btn.style.color=c.txt;btn.style.borderColor=c.pill;}
+  renderGrid();
+}
+
+function renderGrid(){
+  const list=activeTrack==='All'?SESSIONS:SESSIONS.filter(s=>s.track===activeTrack);
+  document.getElementById('sessions-grid').innerHTML=list.map(s=>{
+    const isSel=selected.has(s.id);
+    const dis=!isSel&&selected.size>=5;
+    const c=tc(s.track);
+    return`<div class="scard${isSel?' sel':''}${dis?' disabled':''}" id="sc-${s.id}" onclick="toggleSess('${s.id}')" style="${isSel?`border-color:${c.bar};background:${c.pill}`:''}">
+      <div class="ck" style="background:${c.bar}"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="sc-title" style="${isSel?`color:${c.txt}`:''}">${s.title}</div>
+      <div class="sc-meta">
+        <span class="lvl l${s.level}">${s.level==='KN'?'Keynote':'L'+s.level}</span>
+        <span class="sc-time">${s.time}</span>
+        <span class="sc-track" style="background:${c.pill};color:${c.txt}">${s.track}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSess(id){
+  if(selected.has(id)){selected.delete(id);}
+  else{if(selected.size>=5){document.getElementById('sel-warn').style.display='flex';return;}selected.add(id);}
+  document.getElementById('sel-warn').style.display='none';
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+  updateSelBar();renderGrid();
+}
+function updateSelBar(){document.getElementById('sel-count').textContent=selected.size;}
+function initials(n){return n.trim().split(' ').map(w=>w[0]||'').slice(0,2).join('').toUpperCase();}
+
+function submitReg(){
+  const name=document.getElementById('r-name').value.trim();
+  const email=document.getElementById('r-email').value.trim();
+  const role=document.getElementById('r-role').value.trim();
+  const dept=document.getElementById('r-dept').value;
+  if(!name||!email){alert('Please enter your name and email.');return;}
+  if(selected.size===0){alert('Please select at least one session.');return;}
+  const sessions=SESSIONS.filter(s=>selected.has(s.id));
+  const pal=AVA_PAL[regs.length%AVA_PAL.length];
+  regs.push({name,email,role,dept,sessions,ts:new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),pal});
+  document.getElementById('s-name').textContent=name+' is registered!';
+  document.getElementById('s-chips').innerHTML=sessions.map(s=>{const c=tc(s.track);return`<span class="chip" style="background:${c.pill};color:${c.txt}">${s.title}</span>`;}).join('');
+  document.getElementById('form-view').style.display='none';
+  document.getElementById('success-view').style.display='block';
+}
+
+function resetForm(){
+  ['r-name','r-email','r-role'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('r-dept').value='';
+  selected.clear();activeTrack='All';
+  document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.track-pill').forEach((b,i)=>{b.classList.toggle('on',i===0);b.style.cssText=i===0?'background:#0A1628;color:#FF9900;border-color:#0A1628':'';});
+  updateSelBar();renderGrid();
+  document.getElementById('success-view').style.display='none';
+  document.getElementById('form-view').style.display='block';
+}
+
+function renderAdmin(){
+  const q=(document.getElementById('s-search').value||'').toLowerCase();
+  const dept=document.getElementById('s-dept').value;
+  const filtered=regs.filter(r=>(!q||(r.name.toLowerCase().includes(q)||r.email.toLowerCase().includes(q)))&&(!dept||r.dept===dept));
+
+  const statsData=[
+    {n:regs.length,bg:'#E6F1FB',nc:'#0C447C',lc:'#185FA5',l:'Engineers registered'},
+    {n:regs.reduce((a,r)=>a+r.sessions.length,0),bg:'#EEEDFE',nc:'#3C3489',lc:'#534AB7',l:'Session selections'},
+    {n:new Set(regs.map(r=>r.dept).filter(Boolean)).size,bg:'#EAF3DE',nc:'#27500A',lc:'#3B6D11',l:'Teams represented'},
+    {n:regs.filter(r=>r.sessions.length>=5).length,bg:'#E1F5EE',nc:'#085041',lc:'#0F6E56',l:'On track for certificate'},
+  ];
+  document.getElementById('stats-row').innerHTML=statsData.map(s=>`<div class="stat" style="background:${s.bg}"><div class="stat-n" style="color:${s.nc}">${s.n}</div><div class="stat-l" style="color:${s.lc}">${s.l}</div></div>`).join('');
+
+  const freq={};
+  regs.forEach(r=>r.sessions.forEach(s=>{freq[s.id]=(freq[s.id]||0)+1;}));
+  const popChart=document.getElementById('pop-chart');
+  if(Object.keys(freq).length){
+    popChart.style.display='block';
+    const maxF=Math.max(...Object.values(freq));
+    const sorted=SESSIONS.filter(s=>freq[s.id]).sort((a,b)=>(freq[b.id]||0)-(freq[a.id]||0)).slice(0,8);
+    document.getElementById('bar-items').innerHTML=sorted.map(s=>{const c=tc(s.track);return`<div class="bar-item"><span class="bar-name">${s.title}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round((freq[s.id]/maxF)*100)}%;background:${c.bar}"></div></div><span class="bar-ct">${freq[s.id]}</span></div>`;}).join('');
+  } else {popChart.style.display='none';}
+
+  const list=document.getElementById('reg-list');
+  if(!filtered.length){
+    list.innerHTML=`<div class="empty"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>${regs.length?'No results match your filter':'No engineers registered yet'}</div>`;
+    return;
+  }
+  list.innerHTML=filtered.map(r=>`<div class="reg-card">
+    <div class="reg-head">
+      <div class="ava" style="background:${r.pal.bg};color:${r.pal.txt}">${initials(r.name)}</div>
+      <div><div class="reg-name">${r.name}${r.dept?` <span style="font-weight:400;font-size:12px;color:var(--muted)">· ${r.dept}</span>`:''}</div><div class="reg-sub">${r.email}${r.role?' · '+r.role:''}</div></div>
+      <div class="reg-ts">${r.ts}</div>
+    </div>
+    <div class="chips">${r.sessions.map(s=>{const c=tc(s.track);return`<span class="chip" style="background:${c.pill};color:${c.txt}"><span class="lvl l${s.level}" style="margin-right:4px;font-size:9px">${s.level==='KN'?'KN':'L'+s.level}</span>${s.title}</span>`;}).join('')}</div>
+  </div>`).join('');
+}
+
+function exportCSV(){
+  if(!regs.length){alert('No registrations to export.');return;}
+  const rows=[['Name','Email','Role','Team','Sessions','Registered at']];
+  regs.forEach(r=>rows.push([r.name,r.email,r.role,r.dept,r.sessions.map(s=>s.title).join(' | '),r.ts]));
+  const csv=rows.map(r=>r.map(c=>'"'+String(c||'').replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='aws_summit_registrations.csv';a.click();
+}
+
+function switchPage(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el=>el.classList.remove('active'));
+  const pageEl=document.getElementById('page-'+p);
+  if(pageEl)pageEl.classList.add('active');
+  const tabEl=document.querySelector('[data-page="'+p+'"]');
+  if(tabEl)tabEl.classList.add('active');
+  if(p==='admin')renderAdmin();
+}
+
+initForm();
+</script>
+</body>
+</html>
