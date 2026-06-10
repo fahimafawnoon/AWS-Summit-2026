@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simras &amp; Fahima — Wedding &amp; Waleema Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1c2a4a;
+    --gold:#c5a253;
+    --gold-light:#e8d9b5;
+    --cream:#faf6ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:#9aa3b5;
+    font-family:'Cormorant Garamond', serif;
+    display:flex;
+    justify-content:center;
+    padding:24px;
+  }
+  .card{
+    width:5in;
+    height:7in;
+    background:var(--cream);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+    border:14px solid var(--navy);
+    outline:1px solid var(--gold);
+    outline-offset:-8px;
+    display:flex;
+    flex-direction:column;
+  }
+  /* corner ornaments */
+  .corner{
+    position:absolute;
+    width:46px;height:46px;
+    border:2px solid var(--gold);
+    z-index:3;
+  }
+  .corner.tl{top:14px;left:14px;border-right:none;border-bottom:none;}
+  .corner.tr{top:14px;right:14px;border-left:none;border-bottom:none;}
+  .corner.bl{bottom:14px;left:14px;border-right:none;border-top:none;}
+  .corner.br{bottom:14px;right:14px;border-left:none;border-top:none;}
+
+  .photos{
+    display:flex;
+    height:2.4in;
+    width:100%;
+    flex-shrink:0;
+    background:var(--navy);
+  }
+  .photos .photo{
+    flex:1;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(0.95);
+  }
+  .photos .photo-placeholder{
+    flex:1;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold-light);
+    font-family:'Marcellus',serif;
+    font-size:11px;letter-spacing:.08em;
+    text-align:center;
+    background:linear-gradient(135deg,var(--navy),#2a3c66);
+    padding:8px;
+  }
+  .photo-divider{
+    width:6px;background:var(--gold);
+    flex-shrink:0;
+  }
+
+  .content{
+    flex:1;
+    padding:18px 30px 14px;
+    text-align:center;
+    color:var(--navy);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+  }
+  .bismillah{
+    font-family:'Marcellus',serif;
+    font-size:13px;
+    color:var(--gold);
+    margin-top:6px;
+    letter-spacing:.05em;
+  }
+  .bismillah .arabic{
+    display:block;
+    font-size:16px;
+    color:var(--navy);
+    margin-bottom:2px;
+  }
+  .intro{
+    font-size:12.5px;
+    line-height:1.35;
+    margin:8px 0 4px;
+    max-width:88%;
+    color:#3a4566;
+  }
+  .names{
+    font-family:'Allura', cursive;
+    font-size:54px;
+    color:var(--navy);
+    line-height:1;
+    margin:6px 0 2px;
+  }
+  .names .amp{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:24px;
+    color:var(--gold);
+    margin:0 8px;
+    vertical-align:middle;
+  }
+  .parents{
+    font-size:11px;
+    display:flex;
+    justify-content:space-between;
+    width:92%;
+    color:#555f7f;
+    margin-bottom:6px;
+    gap:10px;
+  }
+  .parents div{flex:1;}
+  hr.divider{
+    width:60%;
+    border:none;
+    border-top:1px solid var(--gold);
+    margin:6px 0;
+  }
+  .event-title{
+    font-family:'Marcellus',serif;
+    font-size:14px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--navy);
+    margin:4px 0;
+  }
+  .venue{
+    font-family:'Marcellus',serif;
+    font-size:18px;
+    color:var(--gold);
+    margin-top:2px;
+  }
+  .venue-addr{
+    font-size:11.5px;
+    color:#555f7f;
+  }
+  .date{
+    font-family:'Marcellus',serif;
+    font-size:17px;
+    color:var(--navy);
+    margin-top:8px;
+  }
+  .date-sub{
+    font-size:11px;
+    color:#777;
+  }
+  .time{
+    font-size:13px;
+    font-weight:600;
+    margin-top:4px;
+    color:var(--navy);
+  }
+  .dua-arabic{
+    font-family:'Marcellus',serif;
+    font-size:14px;
+    color:var(--gold);
+    margin-top:8px;
+  }
+  .dua-en{
+    font-size:10.5px;
+    font-style:italic;
+    color:#555f7f;
+    max-width:90%;
+    margin:2px auto 0;
+  }
+
+  .footer{
+    margin-top:auto;
+    width:100%;
+    background:var(--navy);
+    color:var(--cream);
+    padding:10px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:11px;
+    gap:10px;
+  }
+  .footer .rsvp-text{text-align:left;}
+  .footer .rsvp-text b{
+    color:var(--gold);
+    font-family:'Marcellus',serif;
+    letter-spacing:.08em;
+    display:block;
+    font-size:11px;
+    margin-bottom:2px;
+  }
+  .footer .qr{
+    background:#fff;
+    padding:4px;
+    border-radius:4px;
+    flex-shrink:0;
+  }
+  .footer .qr img{display:block;width:64px;height:64px;}
+  .footer .qr-label{
+    font-size:8px;
+    text-align:center;
+    margin-top:2px;
+    color:var(--gold-light);
+  }
+
+  @media print{
+    body{background:#fff;padding:0;}
+    .card{box-shadow:none;margin:0;}
+    @page{size:5in 7in;margin:0;}
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <div class="photos">
+      <!-- Replace src with your engagement photos: images/photo1.jpg and images/photo2.jpg -->
+      <img class="photo" src="images/photo1.jpg" alt="Simras & Fahima"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-placeholder',innerHTML:'Engagement Photo 1<br>(images/photo1.jpg)'}))">
+      <div class="photo-divider"></div>
+      <img class="photo" src="images/photo2.jpg" alt="Simras & Fahima"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'photo-placeholder',innerHTML:'Engagement Photo 2<br>(images/photo2.jpg)'}))">
+    </div>
+
+    <div class="content">
+      <div class="bismillah">
+        <span class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+        In the Name of Allah (SWT), the Beneficent, the Merciful, the Compassionate
+      </div>
+
+      <div class="intro">
+        Together with our beloved families, with grateful hearts and by the will of Allah (SWT),
+        we joyfully invite you to celebrate the blessed union of
+      </div>
+
+      <div class="names">Simras <span class="amp">&amp;</span> Fahima</div>
+
+      <div class="parents">
+        <div>S/O Marhoom Mr. Siyad &amp; Mrs. Naalira</div>
+        <div>D/O Mr. Fawnoon &amp; Mrs. Nazeema</div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="event-title">Wedding &amp; Waleema Celebration</div>
+      <div style="font-size:11px;color:#777;">Insha Allah at</div>
+      <div class="venue">Rosewood Ceylon</div>
+      <div class="venue-addr">56 Hospital Road, Dehiwala</div>
+
+      <div class="date">Saturday, 11th July 2026</div>
+      <div class="date-sub">26 Muharram 1448 AH</div>
+      <div class="time">From 7.30 PM Onwards</div>
+
+      <div class="dua-arabic">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+      <div class="dua-en">May Allah bless you both, shower His blessings upon you, and join you together in goodness.</div>
+    </div>
+
+    <div class="footer">
+      <div class="rsvp-text">
+        <b>RSVP</b>
+        +94 77 207 1270 — Simras<br>
+        +94 76 843 4334 — Fahima
+      </div>
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://wa.me/94772071270%3Ftext=Assalamu%2520Alaikum%2C%2520I%2520would%2520like%2520to%2520confirm%2520my%2520attendance%2520for%2520the%2520Wedding%2520%2526%2520Waleema%2520of%2520Simras%2520%2526%2520Fahima." alt="RSVP QR Code">
+        <div class="qr-label">Scan to RSVP</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
